@@ -14,7 +14,7 @@
     }
     public class Current
     {
-        public string temp_c { get; set; }
-        public string temp_f { get; set; }
+        public int temp_c { get; set; }
+        public int temp_f { get; set; }
     }
 }
