@@ -1,0 +1,34 @@
+﻿@model WeatherModel;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1> Weather Application</h1>
+    <form asp-controller="Home" asp-action="GetWeatherDetails" method="post">
+        <div>
+            <input type="text" name="location" required />
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+    <br />
+    <br />
+    @if (Model != null)
+    {
+        <h5>City: @Model.location.name</h5>
+        <br />
+        <h5>Country: @Model.location.region @Model.location.country</h5>
+        <br />
+        <h5>Time: @Model.location.region @Model.location.localtime</h5>
+        <br />
+
+        <h5>Temprature: @Model.current.temp_f</h5>
+        <br />
+        <h5>Weather description: @Model.current.temp_c</h5>
+    }
+    else if (ViewData.ContainsKey("IsFormSubmitted") && (bool)ViewData["IsFormSubmitted"]) 
+    {
+        <p>@ViewData["Message"]</p>
+    }
+</div>
